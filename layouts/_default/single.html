@@ -3,7 +3,10 @@
 	<article>
 		<div class="title">
 			<h1 class="title">{{ .Title }}</h1>
+			{{ $dateComp := print .Date }}
+			{{ if ne $dateComp "0001-01-01 00:00:00 +0000 UTC" }}
 			<div class="meta">Posted on {{ dateFormat "Jan 2, 2006" .Date }}{{ if .Draft }} <span class="draft-label">DRAFT</span> {{ end }}</div>
+			{{ end }}
 		</div>
 		{{ if isset .Params "tldr" }}
 		<div class="tldr">
